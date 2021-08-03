@@ -1,5 +1,5 @@
 {
-  "name": "barcodescanner",
+  "name": "doric-barcodescanner",
   "version": "0.1.0",
   "main": "build/index.js",
   "scripts": {
