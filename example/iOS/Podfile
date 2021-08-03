@@ -22,5 +22,5 @@ target 'Example' do
 
   pod 'PINCache'
   
-  pod 'BarcodeScanner',           :path => '../../'
+  pod 'DoricBarcodeScanner',           :path => '../../'
 end
