@@ -95,7 +95,7 @@ export default allFiles
         json(),
         image(),
       ],
-      external: ["reflect-metadata", "doric", "templatelibrary"],
+      external: ["reflect-metadata", "doric", "doric-barcodescanner"],
       onwarn: function (warning) {
         if (warning.code === "THIS_IS_UNDEFINED") {
           return;

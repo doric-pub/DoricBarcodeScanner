@@ -32,7 +32,7 @@ public class DoricBarcodeScannerLibrary extends DoricLibrary {
             byte[] bytes = new byte[is.available()];
             is.read(bytes);
             String content = new String(bytes);
-            registry.registerJSBundle("barcodescanner", content);
+            registry.registerJSBundle("doric-barcodescanner", content);
         } catch (IOException e) {
             e.printStackTrace();
         }
