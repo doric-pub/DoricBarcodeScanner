@@ -30,6 +30,7 @@ export enum ScanResult {
   CANCELED = 1,
   PERMISSION_NOT_GRANTED = 2,
   NO_DATA = 3,
+  OTHER = 4,
 }
 
 export function barcodeScanner(context: BridgeContext) {
