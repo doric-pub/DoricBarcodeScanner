@@ -9,7 +9,7 @@ import {
   navbar,
   modal,
 } from "doric";
-import { demoPlugin } from "barcodescanner";
+import { barcodeScanner } from "doric-barcodescanner";
 
 @Entry
 class Example extends Panel {
@@ -24,7 +24,7 @@ class Example extends Panel {
         backgroundColor: Color.parse("#70a1ff"),
         textColor: Color.WHITE,
         onClick: async () => {
-          const result = await demoPlugin(this.context).call();
+          const result = await barcodeScanner(this.context).scan();
           await modal(this.context).alert(result);
         },
         layoutConfig: layoutConfig().fit(),

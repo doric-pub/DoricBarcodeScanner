@@ -2,13 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function demoPlugin(context) {
+function barcodeScanner(context) {
     return {
-        call: () => {
-            return context.callNative("demoPlugin", "call");
+        scan: () => {
+            return context.callNative("barcodeScanner", "scan");
         },
     };
 }
 
-exports.demoPlugin = demoPlugin;
+exports.barcodeScanner = barcodeScanner;
 //# sourceMappingURL=bundle_barcodescanner.js.map

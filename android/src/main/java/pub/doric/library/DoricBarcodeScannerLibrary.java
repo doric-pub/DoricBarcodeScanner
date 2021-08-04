@@ -21,6 +21,6 @@ public class DoricBarcodeScannerLibrary extends DoricLibrary {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        registry.registerNativePlugin(DoricDemoPlugin.class);
+        registry.registerNativePlugin(DoricBarcodeScannerPlugin.class);
     }
 }
