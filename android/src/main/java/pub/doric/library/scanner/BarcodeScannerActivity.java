@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -75,7 +74,7 @@ public class BarcodeScannerActivity extends Activity implements ZXingScannerView
                 useAutoFocus = androidConfig.getBoolean("useAutoFocus", false);
             }
         }
-        zXingScannerView = new ZXingAutofocusScannerView(this);
+        zXingScannerView = new ZXingScannerView(this);
         zXingScannerView.setAutoFocus(useAutoFocus);
 
         if (restrictFormat.size() > 0) {
@@ -92,6 +91,11 @@ public class BarcodeScannerActivity extends Activity implements ZXingScannerView
         }
 
         setContentView(zXingScannerView);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
     }
 
     private BarcodeFormat intToBarcodeFormat(int v) {
@@ -198,21 +202,25 @@ public class BarcodeScannerActivity extends Activity implements ZXingScannerView
     @Override
     public void handleResult(Result rawResult) {
         if (rawResult == null) {
-            finishWithError("No data was scanned");
+            finishWithError(3);
         } else {
             Intent intent = new Intent();
             intent.putExtra("format", barcodeFormatToInt(rawResult.getBarcodeFormat()));
             intent.putExtra("formatNote", rawResult.getBarcodeFormat().toString());
             intent.putExtra("rawContent", rawResult.getText());
+            intent.putExtra("result", 0);
             setResult(Activity.RESULT_OK, intent);
             finish();
         }
     }
 
-    private void finishWithError(String errorCode) {
+    private void finishWithError(int errorCode) {
         Intent intent = new Intent();
-        intent.putExtra("error", errorCode);
-        setResult(Activity.RESULT_CANCELED, intent);
+        intent.putExtra("result", errorCode);
+        intent.putExtra("format", 0);
+        intent.putExtra("formatNote", "Unknown");
+        intent.putExtra("rawContent", "");
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 
@@ -244,7 +252,7 @@ public class BarcodeScannerActivity extends Activity implements ZXingScannerView
             if (verifyPermissions(grantResults)) {
                 zXingScannerView.startCamera();
             } else {
-                finishWithError("PERMISSION_NOT_GRANTED");
+                finishWithError(2);
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);

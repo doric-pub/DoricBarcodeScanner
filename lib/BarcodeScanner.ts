@@ -25,6 +25,12 @@ export enum BarcodeFormat {
   /** PDF417 format. */
   PDF_417 = 11,
 }
+export enum ScanResult {
+  SUCCESS = 0,
+  CANCELED = 1,
+  PERMISSION_NOT_GRANTED = 2,
+  NO_DATA = 3,
+}
 
 export function barcodeScanner(context: BridgeContext) {
   return {
@@ -53,6 +59,7 @@ export function barcodeScanner(context: BridgeContext) {
         format: BarcodeFormat;
         formatNote: string;
         rawContent: string;
+        result: ScanResult;
       }>;
     },
     numberOfCameras: () => {

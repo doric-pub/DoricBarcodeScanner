@@ -8,6 +8,7 @@ import {
   Color,
   navbar,
   modal,
+  Text,
 } from "doric";
 import { barcodeScanner } from "doric-barcodescanner";
 
@@ -19,13 +20,50 @@ class Example extends Panel {
   build(rootView: Group) {
     vlayout([
       text({
-        text: "Click to call native plugin",
+        text: "Number of cameras",
+        textSize: 20,
+        backgroundColor: Color.parse("#70a1ff"),
+        textColor: Color.WHITE,
+        onClick: async function () {
+          const number = await barcodeScanner(context).numberOfCameras();
+          const tv: Text = this as Text;
+          this.text = `Camera number :${number}`;
+        },
+        layoutConfig: layoutConfig().fit(),
+        padding: { left: 20, right: 20, top: 20, bottom: 20 },
+      }),
+      text({
+        text: "Camera 0",
         textSize: 20,
         backgroundColor: Color.parse("#70a1ff"),
         textColor: Color.WHITE,
         onClick: async () => {
-          const result = await barcodeScanner(this.context).scan();
-          await modal(this.context).alert(result);
+          try {
+            const result = await barcodeScanner(this.context).scan({
+              useCamera: 0,
+            });
+            await modal(this.context).alert(JSON.stringify(result));
+          } catch (e) {
+            await modal(this.context).alert(e);
+          }
+        },
+        layoutConfig: layoutConfig().fit(),
+        padding: { left: 20, right: 20, top: 20, bottom: 20 },
+      }),
+      text({
+        text: "Camera 1",
+        textSize: 20,
+        backgroundColor: Color.parse("#70a1ff"),
+        textColor: Color.WHITE,
+        onClick: async () => {
+          try {
+            const result = await barcodeScanner(this.context).scan({
+              useCamera: 1,
+            });
+            await modal(this.context).alert(JSON.stringify(result));
+          } catch (e) {
+            await modal(this.context).alert(e);
+          }
         },
         layoutConfig: layoutConfig().fit(),
         padding: { left: 20, right: 20, top: 20, bottom: 20 },
