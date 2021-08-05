@@ -44,11 +44,11 @@ public class BarcodeScannerActivity extends Activity implements ZXingScannerView
     private static final int REQUEST_TAKE_PHOTO_CAMERA_PERMISSION = 100;
     private String flashOnLabel = "Flash on";
     private String flashOffLabel = "Flash off";
-    private List<BarcodeFormat> restrictFormat = new ArrayList<>();
+    private final List<BarcodeFormat> restrictFormat = new ArrayList<>();
     private int useCamera = -1;
     private boolean autoEnableFlash = false;
     private float aspectTolerance = -1;
-    private boolean useAutoFocus = false;
+    private boolean useAutoFocus = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

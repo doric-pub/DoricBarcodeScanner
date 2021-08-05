@@ -34,6 +34,7 @@ exports.ScanResult = void 0;
     ScanResult[ScanResult["CANCELED"] = 1] = "CANCELED";
     ScanResult[ScanResult["PERMISSION_NOT_GRANTED"] = 2] = "PERMISSION_NOT_GRANTED";
     ScanResult[ScanResult["NO_DATA"] = 3] = "NO_DATA";
+    ScanResult[ScanResult["OTHER"] = 4] = "OTHER";
 })(exports.ScanResult || (exports.ScanResult = {}));
 function barcodeScanner(context) {
     return {
