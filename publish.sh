@@ -13,9 +13,6 @@ echo "Current version is "$CURRENT_VERSION
 ## JS
 cd $CURRENT_DIR && npm version $CURRENT_VERSION --allow-same-version
 
-## Android
-echo "version="$CURRENT_VERSION > $CURRENT_DIR/doric-android/version.properties
-
 ## iOS
 sed -i "" "s/\(version[ ]*= \)'[0-9 \.]*'/\1'$CURRENT_VERSION'/g" $CURRENT_DIR/DoricBarcodeScanner.podspec
 
