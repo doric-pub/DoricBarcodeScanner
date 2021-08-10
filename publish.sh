@@ -31,6 +31,11 @@ git push --tags
 
 npm install doric-cli -g
 
+npm install
+
+cd example && npm install && cd ..
+
+
 echo "Publish JS"
 cd $CURRENT_DIR/ && npm publish 
 echo "Publish Android"
