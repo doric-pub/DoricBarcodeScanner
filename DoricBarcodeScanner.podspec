@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name             = 'DoricBarcodeScanner'
     s.version          = '0.1.0'
-    s.summary          = 'Doric extension library'
+    s.summary          = 'Doric library for scanning barcode'
   
     s.description      = <<-DESC
     This is a doric extension library for scanning barcode

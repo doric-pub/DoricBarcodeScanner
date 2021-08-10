@@ -50,3 +50,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'me.dm7.barcodescanner:zxing:1.9.13'
 }
+
+def version = new File(project.getProjectDir().parent + "/version").text
+println("Publish version:" + version)
+
+ext {
+    Version = version
+}
+
+def script = project.getProjectDir().parent + "/scripts/upload.gradle"
+if (new File(script).exists()) {
+    apply from: rootProject.file(script)
+}
