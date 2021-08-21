@@ -30,7 +30,7 @@
             AVMetadataMachineReadableCodeObject *code = codes.firstObject;
             called = YES;
             [promise resolve:@{
-                    @"type": @(0),
+                    @"result": @(0),
                     @"format": @([self formatToInt:code.type]),
                     @"formatNote": code.type,
                     @"rawContent": code.stringValue,
@@ -40,7 +40,7 @@
         vc.errorCallback = ^(NSUInteger errorType) {
             if (called) {
                 [promise resolve:@{
-                        @"type": @(errorType),
+                        @"result": @(errorType),
                         @"format": @(0),
                         @"formatNote": @"Unknown",
                         @"rawContent": @"",
@@ -50,7 +50,7 @@
             __strong typeof(_self) self = _self;
             called = YES;
             [promise resolve:@{
-                    @"type": @(errorType),
+                    @"result": @(errorType),
                     @"format": @(0),
                     @"formatNote": @"Unknown",
                     @"rawContent": @"",
