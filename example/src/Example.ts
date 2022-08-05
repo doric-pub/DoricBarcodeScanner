@@ -44,7 +44,7 @@ class Example extends Panel {
             });
             await modal(this.context).alert(JSON.stringify(result));
           } catch (e) {
-            await modal(this.context).alert(e);
+            await modal(this.context).alert(e as string);
           }
         },
         layoutConfig: layoutConfig().fit(),
@@ -62,7 +62,7 @@ class Example extends Panel {
             });
             await modal(this.context).alert(JSON.stringify(result));
           } catch (e) {
-            await modal(this.context).alert(e);
+            await modal(this.context).alert(e as string);
           }
         },
         layoutConfig: layoutConfig().fit(),
